@@ -1,0 +1,6 @@
+name: astrbot_plugin_apng_reader
+display_name: APNG 真图解析
+desc: 在模型请求前将 APNG 解码成静态动画帧，支持跳过独立封面、抽帧和末帧模式。
+version: v1.0.0
+author: wtx
+repo: https://github.com/ninthsister/astrbot_plugin_apng_reader

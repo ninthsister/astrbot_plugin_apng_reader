@@ -1,0 +1,37 @@
+{
+  "enabled": {
+    "type": "bool",
+    "default": true,
+    "description": "启用 APNG 解析"
+  },
+  "mode": {
+    "type": "string",
+    "default": "sample",
+    "description": "sample：顺序抽帧（包含末帧）；last：只读最后一帧"
+  },
+  "max_frames": {
+    "type": "int",
+    "default": 6,
+    "description": "每张 APNG 最多传给模型的帧数（1–12），抽帧可能漏掉短暂内容"
+  },
+  "max_apng_per_request": {
+    "type": "int",
+    "default": 3,
+    "description": "每次请求最多转换的 APNG 数量"
+  },
+  "max_file_mb": {
+    "type": "int",
+    "default": 25,
+    "description": "解码文件大小上限 MB（下载完成后检查）"
+  },
+  "max_decode_frames": {
+    "type": "int",
+    "default": 200,
+    "description": "最大解码帧数，超出保留原图"
+  },
+  "add_frame_note": {
+    "type": "bool",
+    "default": true,
+    "description": "向本轮用户提示添加帧编号和抽帧说明"
+  }
+}
