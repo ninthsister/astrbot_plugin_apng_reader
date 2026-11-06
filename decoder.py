@@ -13,12 +13,18 @@ class DecodeLimit(ValueError):
 def decode_apng(path, max_frames=6, mode="sample", max_file_mb=25,
                 max_decode_frames=200, max_pixels=20_000_000,
                 max_total_pixels=300_000_000, max_side=1536):
-    path = Path(path)
-    if path.stat().st_size > max_file_mb * 1024 * 1024:
+    raw = path if isinstance(path, bytes) else None
+    path = io.BytesIO(raw) if raw is not None else Path(path)
+    size = len(raw) if raw is not None else path.stat().st_size
+    if size > max_file_mb * 1024 * 1024:
         raise DecodeLimit("图片文件超过大小上限")
-    with path.open("rb") as stream:
-        if stream.read(8) != b"\x89PNG\r\n\x1a\n":
+    if raw is not None:
+        if not raw.startswith(b"\x89PNG\r\n\x1a\n"):
             return None
+    else:
+        with path.open("rb") as stream:
+            if stream.read(8) != b"\x89PNG\r\n\x1a\n":
+                return None
     try:
         image = Image.open(path)
     except UnidentifiedImageError:

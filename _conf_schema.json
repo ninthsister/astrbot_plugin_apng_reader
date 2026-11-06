@@ -33,5 +33,30 @@
     "type": "bool",
     "default": true,
     "description": "向本轮用户提示添加帧编号和抽帧说明"
+  },
+  "early_message_decode": {
+    "type": "bool",
+    "default": true,
+    "description": "在天使心等插件缓存图片前，把 APNG 替换为静态真实帧预览"
+  },
+  "angel_compatibility": {
+    "type": "bool",
+    "default": true,
+    "description": "启用 AngelHeart/Smile/Eye 可撤销运行时适配，Memory 沿用标准请求链"
+  },
+  "smile_extract_last_frame": {
+    "type": "bool",
+    "default": true,
+    "description": "天使之笑直接收录原始 APNG 时，提取末帧 PNG，避免按封面判重/入库"
+  },
+  "eye_history_images": {
+    "type": "bool",
+    "default": true,
+    "description": "天使之眼查询历史后，为 APNG 附上真实静态帧路径，供 angel_describe_image 识别"
+  },
+  "max_history_images": {
+    "type": "int",
+    "default": 6,
+    "description": "每次历史查询最多检查的图片数（含普通图片，1–20），限制下载耗时"
   }
 }
